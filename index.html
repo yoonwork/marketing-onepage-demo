@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>성과로 말하는 원페이지 시안</title>
+<meta name="description" content="마케팅 원페이지의 사례·성과 시각화 제안용 시안입니다. 가상 회사이며 모든 수치와 사례는 예시입니다.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#F5F3EE; --surface:#FFFFFF; --ink:#16181D; --sub:#4E5560; --mut:#6B6F76;
+  --line:#E3DFD6; --line2:#D2CDC2;
+  --accent:#C2410C; --accent-soft:#FBE9DF; --before:#B9B4AA;
+  --r-sm:8px; --r-md:16px; --r-lg:24px;
+  --gut:24px; --max:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:16px;line-height:1.65;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-0.02em}
+
+/* 시안 안내 띠 */
+.demo-bar{background:var(--ink);color:#F5F3EE;font-size:13px}
+.demo-bar .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;min-height:44px;flex-wrap:wrap;padding-top:6px;padding-bottom:6px}
+.demo-bar button{font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:#F5F3EE;border:0;border-radius:999px;padding:0 14px;min-height:36px;cursor:pointer}
+.demo-bar button[aria-pressed="true"]{background:#FBE9DF;color:var(--accent)}
+
+/* 아임웹 메모 */
+.im{display:none;margin:12px 0 0;font-size:13px;line-height:1.5;color:#7A3410;background:#FFF4EC;border:1px dashed #E8A27C;border-radius:var(--r-sm);padding:8px 10px}
+.im b{font-weight:700}
+body.show-im .im{display:block}
+
+/* 머리 */
+header.top{position:sticky;top:0;z-index:5;background:rgba(245,243,238,.94);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-weight:800;font-size:18px;letter-spacing:-0.02em;text-decoration:none}
+.logo span{color:var(--accent)}
+nav.menu{display:flex;gap:28px;font-size:15px;font-weight:500}
+nav.menu a{text-decoration:none;color:var(--sub);padding:10px 0}
+nav.menu a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;font-size:15px;text-decoration:none;border:0;cursor:pointer;font-family:inherit}
+.btn-fill{background:var(--accent);color:#fff}
+.btn-fill:hover{background:#A6370A}
+.btn-line{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.btn-sm{min-height:44px;padding:0 18px;font-size:14px}
+
+/* 공통 섹션 */
+section{padding:128px 0}
+.eyebrow{font-size:14px;font-weight:600;color:var(--accent);margin:0 0 12px}
+h1,h2,h3{margin:0;letter-spacing:-0.02em}
+h2{font-size:40px;line-height:1.25;font-weight:700}
+.lead{font-size:18px;color:var(--sub);max-width:640px;margin:16px 0 0}
+
+/* 히어로 */
+.hero{padding:96px 0 0}
+.hero h1{font-size:60px;line-height:1.18;font-weight:800;max-width:860px}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lead{font-size:19px}
+.hero .ctas{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);margin-top:72px;border-top:1.5px solid var(--ink)}
+.kpi{padding:28px 24px 32px 0}
+.kpi + .kpi{padding-left:24px;border-left:1px solid var(--line)}
+.kpi .v{font-size:52px;font-weight:800;line-height:1.05}
+.kpi .v small{font-size:24px;font-weight:700;margin-left:2px}
+.kpi .l{margin-top:10px;font-size:15px;color:var(--sub)}
+.kpi .s{margin-top:4px;font-size:13px;color:var(--mut)}
+.note{font-size:13px;color:var(--mut);margin-top:8px}
+
+/* 로고 줄 */
+.logos{padding:56px 0 0}
+.logos p{font-size:14px;color:var(--mut);margin:0 0 16px}
+.logo-row{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+.logo-ph{height:64px;border-radius:var(--r-sm);background:#ECE9E2;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;color:#8A857B;letter-spacing:.02em}
+
+/* 셀링포인트 ↔ 증거 */
+.claims{margin-top:56px;border-top:1px solid var(--line2)}
+.claim{display:grid;grid-template-columns:5fr 7fr;gap:48px;padding:40px 0;border-bottom:1px solid var(--line2);align-items:center}
+.claim h3{font-size:26px;line-height:1.35;font-weight:700}
+.claim p{color:var(--sub);margin:10px 0 0}
+.proof{background:var(--surface);border-radius:var(--r-md);padding:24px 28px;display:grid;grid-template-columns:auto 1fr;gap:8px 28px;align-items:center}
+.proof .big{font-size:44px;font-weight:800;color:var(--accent);line-height:1}
+.proof .what{font-size:15px;font-weight:600}
+.proof .src{grid-column:1/-1;font-size:13px;color:var(--mut);border-top:1px solid var(--line);padding-top:12px;margin-top:8px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.proof .src a{color:var(--sub);font-weight:600;text-underline-offset:3px}
+.spark{width:100%;height:56px}
+.linkish{font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:none;border:0;padding:0 2px;min-height:44px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+
+/* 대표 사례 (전후 + 차트) */
+.feature{margin-top:56px;background:var(--surface);border-radius:var(--r-lg);padding:48px;display:grid;grid-template-columns:4fr 6fr;gap:56px}
+.tag{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:999px;background:#ECE9E2;color:var(--sub)}
+.feature h3{font-size:28px;line-height:1.35;margin-top:14px}
+.steps{list-style:none;padding:0;margin:24px 0 0}
+.steps li{padding:14px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:72px 1fr;gap:12px;font-size:15px}
+.steps li b{font-weight:700;color:var(--ink)}
+.steps li span{color:var(--sub)}
+.ba{margin-top:8px}
+.ba-row{padding:16px 0;border-bottom:1px solid var(--line)}
+.ba-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:15px;font-weight:600}
+.ba-head .delta{color:var(--accent);font-weight:700}
+.bars{margin-top:10px;display:grid;gap:6px}
+.bar{display:grid;grid-template-columns:44px 1fr 92px;align-items:center;gap:10px;font-size:13px;color:var(--mut)}
+.bar .track{height:12px;background:#F0EDE6;border-radius:4px;overflow:hidden}
+.bar .fill{height:100%;border-radius:4px;background:var(--before)}
+.bar.after .fill{background:var(--accent)}
+.bar.after{color:var(--ink);font-weight:600}
+.bar .val{text-align:right}
+.chart-box{margin-top:28px}
+.chart-box h4{margin:0 0 4px;font-size:15px}
+.chart-box .cap{font-size:13px;color:var(--mut);margin:0 0 8px}
+.chart{width:100%;height:auto;display:block}
+.legend{display:flex;gap:16px;font-size:13px;color:var(--sub);margin-top:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+
+/* 사례 목록 */
+.filters{display:flex;gap:8px;margin-top:40px;flex-wrap:wrap}
+.filters button{font:inherit;font-size:14px;font-weight:600;min-height:44px;padding:0 18px;border-radius:999px;border:1.5px solid var(--line2);background:transparent;color:var(--sub);cursor:pointer}
+.filters button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.case-list{margin-top:24px;border-top:1.5px solid var(--ink)}
+.case{display:grid;grid-template-columns:200px 1fr 300px 120px;gap:32px;padding:32px 0;border-bottom:1px solid var(--line2);align-items:center}
+.case .who b{display:block;font-size:17px}
+.case .who span{font-size:14px;color:var(--mut)}
+.case .what{color:var(--sub);font-size:15px}
+.case .what strong{display:block;color:var(--ink);font-size:17px;margin-bottom:4px;font-weight:700}
+.case .res{display:flex;gap:24px}
+.case .res div{min-width:0}
+.case .res .n{font-size:30px;font-weight:800;line-height:1.1}
+.case .res .n.up{color:var(--accent)}
+.case .res .k{font-size:13px;color:var(--mut);margin-top:4px}
+.shot{height:84px;border-radius:var(--r-sm);background:repeating-linear-gradient(135deg,#ECE9E2 0 8px,#E5E1D8 8px 16px);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#7D786E;text-align:center;line-height:1.35;text-decoration:none;border:0;cursor:pointer;font-family:inherit;width:100%}
+.shot:hover{outline:2px solid var(--ink)}
+.empty{display:none;padding:48px 0;color:var(--mut);text-align:center;border-bottom:1px solid var(--line2)}
+
+/* 진행 방식 */
+.flow{display:grid;grid-template-columns:repeat(4,1fr);margin-top:48px;border-top:1px solid var(--line2)}
+.flow div{padding:24px 24px 0 0}
+.flow div + div{padding-left:24px;border-left:1px solid var(--line2)}
+.flow .w{font-size:14px;font-weight:600;color:var(--accent)}
+.flow h3{font-size:20px;margin:6px 0 8px}
+.flow p{margin:0;color:var(--sub);font-size:15px}
+
+/* 문의 */
+.contact{background:var(--ink);color:#F5F3EE}
+.contact .wrap{display:grid;grid-template-columns:5fr 6fr;gap:64px;align-items:start}
+.contact h2{color:#fff}
+.contact .lead{color:#C9C6BF}
+.contact ul{margin:28px 0 0;padding:0;list-style:none;color:#C9C6BF;font-size:15px}
+.contact ul li{padding:10px 0;border-top:1px solid #33363D}
+form.f{background:var(--surface);color:var(--ink);border-radius:var(--r-lg);padding:32px;display:grid;gap:16px}
+.fld label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.fld input,.fld select{width:100%;min-height:48px;border:1.5px solid #8F8A80;border-radius:var(--r-sm);padding:0 14px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+.fld input:focus,.fld select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.fld .err{display:none;color:#B42318;font-size:13px;margin-top:6px}
+.fld.bad input{border-color:#B42318}
+.fld.bad .err{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--sub);min-height:44px}
+.chk input{width:20px;height:20px;margin-top:2px;accent-color:var(--accent)}
+.done{display:none;text-align:left;padding:8px 0}
+.done h3{font-size:22px}
+.done p{color:var(--sub)}
+
+/* 적용표 */
+.map{padding:96px 0}
+.map table{width:100%;border-collapse:collapse;margin-top:32px;font-size:15px;background:var(--surface);border-radius:var(--r-md);overflow:hidden}
+.map th,.map td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.map th{font-size:13px;color:var(--mut);font-weight:600;background:#FAF9F6}
+.map td:first-child{font-weight:600;white-space:nowrap}
+.map .ok{color:#1E6B45;font-weight:600}
+.map .chk2{color:#8A4B0F;font-weight:600}
+.src-list{margin-top:16px;font-size:13px;color:var(--mut)}
+.src-list a{color:var(--sub)}
+
+footer{border-top:1px solid var(--line2);padding:40px 0 56px;font-size:13px;color:var(--mut)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* 모달 */
+dialog{border:0;border-radius:var(--r-lg);padding:28px;max-width:520px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(22,24,29,.55)}
+dialog .ph{height:220px;border-radius:var(--r-md);background:repeating-linear-gradient(135deg,#ECE9E2 0 10px,#E5E1D8 10px 20px);display:flex;align-items:center;justify-content:center;color:#7D786E;font-weight:600;font-size:14px;text-align:center;padding:16px}
+dialog h3{font-size:20px;margin-bottom:6px}
+dialog p{color:var(--sub);font-size:15px;margin:12px 0 16px}
+
+/* 휴대폰 */
+@media (max-width:900px){
+  :root{--gut:16px}
+  nav.menu{display:none}
+  section{padding:72px 0}
+  .hero{padding:48px 0 0}
+  .hero h1{font-size:34px;line-height:1.22}
+  .hero .lead{font-size:16px}
+  h2{font-size:26px;line-height:1.3}
+  .lead{font-size:16px}
+  .kpis{grid-template-columns:1fr 1fr;margin-top:48px}
+  .kpi{padding:20px 12px 20px 0}
+  .kpi + .kpi{padding-left:12px}
+  .kpi:nth-child(3){padding-left:0;border-left:0}
+  .kpi:nth-child(n+3){border-top:1px solid var(--line)}
+  .kpi .v{font-size:36px}
+  .kpi .v small{font-size:18px}
+  .kpi .l{font-size:14px}
+  .logo-row{grid-template-columns:repeat(3,1fr);gap:8px}
+  .logo-ph{height:52px}
+  .claim{grid-template-columns:1fr;gap:20px;padding:32px 0}
+  .claim h3{font-size:21px}
+  .proof{padding:20px;gap:6px 16px}
+  .proof .big{font-size:34px}
+  .feature{grid-template-columns:1fr;padding:24px 20px;gap:32px;margin-top:40px;border-radius:var(--r-md)}
+  .feature h3{font-size:22px}
+  .bar{grid-template-columns:40px 1fr 80px}
+  .case{grid-template-columns:1fr;gap:14px;padding:24px 0}
+  .case .res .n{font-size:26px}
+  .shot{height:56px}
+  .flow{grid-template-columns:1fr}
+  .flow div,.flow div + div{padding:20px 0;border-left:0;border-bottom:1px solid var(--line2)}
+  .contact .wrap{grid-template-columns:1fr;gap:32px}
+  form.f{padding:24px 20px}
+  .row2{grid-template-columns:1fr}
+  .map table,.map tbody,.map tr,.map td{display:block;width:100%}
+  .map thead{display:none}
+  .map tr{border-bottom:1px solid var(--line2);padding:12px 0}
+  .map td{border:0;padding:4px 16px}
+  .map td:first-child{white-space:normal}
+  .map td[data-l]::before{content:attr(data-l)" · ";color:var(--mut);font-weight:600}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bar"><div class="wrap">
+  <span>제안용 시안 · 가상 회사이며 수치·사례·로고는 모두 예시예요</span>
+  <button type="button" id="imToggle" aria-pressed="false">아임웹 제작 메모 보기</button>
+</div></div>
+
+<header class="top"><div class="wrap">
+  <a class="logo" href="#top">셈결<span>.</span>마케팅</a>
+  <nav class="menu" aria-label="페이지 이동">
+    <a href="#proof">왜 저희인가</a><a href="#cases">사례</a><a href="#flow">진행 방식</a>
+  </nav>
+  <a class="btn btn-fill btn-sm" href="#contact">상담 신청</a>
+</div></header>
+
+<main id="top">
+<!-- 히어로 + 핵심 숫자 -->
+<section class="hero" aria-labelledby="h-hero"><div class="wrap">
+  <p class="eyebrow">온라인 매출 성장 마케팅</p>
+  <h1 id="h-hero">광고 성과를 클릭 수가 아니라 <em>매출</em>로 보고합니다</h1>
+  <p class="lead">쇼핑몰·프랜차이즈·병원 32곳의 광고를 맡아 매출이 어떻게 바뀌었는지, 숫자와 사례로 먼저 보여드릴게요.</p>
+  <div class="ctas">
+    <a class="btn btn-fill" href="#contact">무료 진단 신청</a>
+    <a class="btn btn-line" href="#cases">사례 먼저 보기</a>
+  </div>
+  <p class="im"><b>아임웹</b> 섹션(배경색) + 텍스트 위젯(제목 h1·본문) + 텍스트 위젯 링크 버튼 2개. 버튼 링크는 섹션 ID로 아래 섹션에 이동.</p>
+
+  <div class="kpis" role="list">
+    <div class="kpi" role="listitem"><div class="v num">2.4<small>배</small></div><div class="l">평균 광고 수익률(ROAS) 상승</div><div class="s">대행 전 3개월 → 대행 후 3개월</div></div>
+    <div class="kpi" role="listitem"><div class="v num">32<small>곳</small></div><div class="l">현재 운영 중인 고객사</div><div class="s">2026년 10월 기준</div></div>
+    <div class="kpi" role="listitem"><div class="v num">91<small>%</small></div><div class="l">1년 이상 계약 유지</div><div class="s">최근 2년 계약 기준</div></div>
+    <div class="kpi" role="listitem"><div class="v num">-38<small>%</small></div><div class="l">고객 1명 확보 비용(CPA)</div><div class="s">상위 10개 고객사 평균</div></div>
+  </div>
+  <p class="im"><b>시안 설명</b> 숫자마다 기준(기간·대상)을 한 줄로 붙여, 과장처럼 보이지 않게 해요.</p>
+  <p class="im"><b>아임웹</b> 텍스트 위젯 4개를 한 줄에 3칸씩(12칸 그리드). 숫자는 이미지가 아니라 글자라서 나중에 직접 고칠 수 있어요. 위 굵은 선은 텍스트 위젯 '테두리' 설정.</p>
+</div></section>
+
+<!-- 로고 줄 -->
+<div class="logos"><div class="wrap">
+  <p>함께하는 고객사</p>
+  <div class="logo-row">
+    <div class="logo-ph">고객사 로고</div><div class="logo-ph">고객사 로고</div><div class="logo-ph">고객사 로고</div>
+    <div class="logo-ph">고객사 로고</div><div class="logo-ph">고객사 로고</div><div class="logo-ph">고객사 로고</div>
+  </div>
+  <p class="im"><b>아임웹</b> 갤러리 위젯 '그리드 갤러리', 한 줄 6개(휴대폰 3개). 로고는 같은 크기 회색 PNG로 맞춰 드려요.</p>
+</div></div>
+
+<!-- 셀링포인트와 증거 -->
+<section id="proof" aria-labelledby="h-proof"><div class="wrap">
+  <p class="eyebrow">왜 저희인가</p>
+  <h2 id="h-proof">주장 하나에 증거 하나씩 붙였습니다</h2>
+  <p class="lead">'잘한다'는 말 대신, 각 강점 옆에 그 강점을 증명하는 숫자와 원본 자료를 함께 둡니다.</p>
+
+  <div class="claims">
+    <div class="claim">
+      <div>
+        <h3>매주 매출 기준으로 예산을 다시 나눕니다</h3>
+        <p>클릭이 많은 광고가 아니라 실제 구매가 일어난 광고에 예산을 몰아요.</p>
+      </div>
+      <div class="proof">
+        <div class="big num">+147%</div>
+        <div>
+          <div class="what">같은 광고비로 늘어난 월 매출</div>
+          <svg class="spark" viewBox="0 0 240 56" role="img" aria-label="12주 동안 매출이 꾸준히 오르는 작은 선 그래프">
+            <polyline fill="none" stroke="#B9B4AA" stroke-width="2" points="0,46 20,44 40,47 60,43"/>
+            <polyline fill="none" stroke="#C2410C" stroke-width="2.5" points="60,43 80,38 100,36 120,30 140,27 160,22 180,18 200,15 220,10 240,8"/>
+            <line x1="60" y1="4" x2="60" y2="54" stroke="#16181D" stroke-dasharray="3 3"/>
+          </svg>
+        </div>
+        <div class="src"><span>근거: 쇼핑몰 A사 광고 관리자 매출 보고서, 2026년 4~7월</span><button type="button" class="linkish" data-shot="쇼핑몰 A사 · 광고 관리자 매출 보고서">원본 캡처 보기</button></div>
+      </div>
+    </div>
+    <div class="claim">
+      <div>
+        <h3>성과가 안 나면 다음 달 수수료를 받지 않습니다</h3>
+        <p>계약 때 정한 목표 수익률에 못 미친 달은 대행 수수료를 청구하지 않아요.</p>
+      </div>
+      <div class="proof">
+        <div class="big num">3회</div>
+        <div><div class="what">지난 2년간 수수료를 받지 않은 달</div><div class="note" style="margin-top:4px">전체 운영 412개월 중</div></div>
+        <div class="src"><span>근거: 계약서 성과 보장 조항, 정산 내역</span><button type="button" class="linkish" data-shot="계약서 성과 보장 조항 · 정산 내역">원본 캡처 보기</button></div>
+      </div>
+    </div>
+    <div class="claim">
+      <div>
+        <h3>보고서는 사장님이 5분 안에 읽게 만듭니다</h3>
+        <p>지표 30개 대신 매출·광고비·수익률 세 줄과 다음 주 할 일만 보내요.</p>
+      </div>
+      <div class="proof">
+        <div class="big num">4.8</div>
+        <div><div class="what">고객사 보고서 만족도 (5점 만점)</div><div class="note" style="margin-top:4px">2026년 상반기 설문, 응답 27곳</div></div>
+        <div class="src"><span>근거: 고객사 설문 결과표</span><button type="button" class="linkish" data-shot="고객사 설문 결과표">원본 캡처 보기</button></div>
+      </div>
+    </div>
+  </div>
+  <p class="im"><b>아임웹</b> 한 줄 = 텍스트 위젯(왼쪽 5칸) + 텍스트 위젯(오른쪽 7칸, 배경 흰색·모서리 둥글게). 작은 선 그래프는 이미지(PNG)로 드려서 텍스트 위젯 안에 이미지 첨부. '원본 캡처 보기'는 기존 캡처를 이미지 위젯 링크(새 창 크게 보기)로 연결.</p>
+</div></section>
+
+<!-- 사례 -->
+<section id="cases" style="padding-top:0" aria-labelledby="h-cases"><div class="wrap">
+  <p class="eyebrow">사례</p>
+  <h2 id="h-cases">캡처 대신, 바뀐 숫자로 보여드려요</h2>
+  <p class="lead">사례마다 '처음 상황 → 저희가 한 일 → 결과'를 같은 순서로 정리했어요. 원본 캡처는 증거로 옆에 붙입니다.</p>
+
+  <!-- 대표 사례 -->
+  <article class="feature" aria-labelledby="h-feat">
+    <div>
+      <span class="tag">대표 사례 · 온라인 쇼핑몰</span>
+      <h3 id="h-feat">리빙 쇼핑몰 B사, 광고비는 그대로 두고 월 매출을 2.5배로</h3>
+      <ul class="steps">
+        <li><b>처음</b><span>광고비 월 800만 원, 매출 대부분이 할인 기간에만 나옴</span></li>
+        <li><b>한 일</b><span>잘 팔리는 상품 12개로 광고를 좁히고, 재구매 고객 광고를 따로 운영</span></li>
+        <li><b>결과</b><span>6개월 만에 월 매출 3,200만 → 7,900만 원</span></li>
+      </ul>
+      <p class="im"><b>아임웹</b> 왼쪽 5칸 텍스트 위젯(분류 칩은 글자 배경색, '처음·한 일·결과'는 표 삽입). 오른쪽 7칸은 아래 막대·그래프 이미지.</p>
+    </div>
+    <div>
+      <div class="ba" aria-label="대행 전후 비교">
+        <div class="ba-row">
+          <div class="ba-head"><span>월 매출</span><span class="delta num">+147%</span></div>
+          <div class="bars">
+            <div class="bar"><span>전</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="val num">3,200만 원</span></div>
+            <div class="bar after"><span>후</span><div class="track"><div class="fill" style="width:99%"></div></div><span class="val num">7,900만 원</span></div>
+          </div>
+        </div>
+        <div class="ba-row">
+          <div class="ba-head"><span>광고 수익률(ROAS)</span><span class="delta num">2.5배</span></div>
+          <div class="bars">
+            <div class="bar"><span>전</span><div class="track"><div class="fill" style="width:40%"></div></div><span class="val num">400%</span></div>
+            <div class="bar after"><span>후</span><div class="track"><div class="fill" style="width:99%"></div></div><span class="val num">990%</span></div>
+          </div>
+        </div>
+        <div class="ba-row">
+          <div class="ba-head"><span>재구매 비율</span><span class="delta num">+14%p</span></div>
+          <div class="bars">
+            <div class="bar"><span>전</span><div class="track"><div class="fill" style="width:36%"></div></div><span class="val num">18%</span></div>
+            <div class="bar after"><span>후</span><div class="track"><div class="fill" style="width:64%"></div></div><span class="val num">32%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chart-box">
+        <h4>월 매출 흐름 (단위: 만 원)</h4>
+        <p class="cap">점선이 대행을 시작한 달이에요.</p>
+        <svg class="chart" viewBox="0 0 640 260" role="img" aria-label="1월부터 12월까지 월 매출 선 그래프. 6월 대행 시작 후 3,200만 원에서 7,900만 원으로 상승">
+          <g font-family="Pretendard Variable, Pretendard, sans-serif" font-size="12" fill="#6B6F76">
+            <line x1="48" y1="220" x2="628" y2="220" stroke="#D2CDC2"/>
+            <line x1="48" y1="160" x2="628" y2="160" stroke="#ECE9E2"/>
+            <line x1="48" y1="100" x2="628" y2="100" stroke="#ECE9E2"/>
+            <line x1="48" y1="40" x2="628" y2="40" stroke="#ECE9E2"/>
+            <text x="40" y="224" text-anchor="end">0</text>
+            <text x="40" y="164" text-anchor="end">3,000</text>
+            <text x="40" y="104" text-anchor="end">6,000</text>
+            <text x="40" y="44" text-anchor="end">9,000</text>
+            <text x="72" y="242" text-anchor="middle">1월</text>
+            <text x="222" y="242" text-anchor="middle">4월</text>
+            <text x="322" y="242" text-anchor="middle">6월</text>
+            <text x="472" y="242" text-anchor="middle">9월</text>
+            <text x="622" y="242" text-anchor="end">12월</text>
+          </g>
+          <line x1="322" y1="24" x2="322" y2="220" stroke="#16181D" stroke-dasharray="4 4"/>
+          <text x="330" y="32" font-family="Pretendard Variable, Pretendard, sans-serif" font-size="12" font-weight="600" fill="#16181D">대행 시작</text>
+          <polyline fill="none" stroke="#B9B4AA" stroke-width="3" stroke-linejoin="round" points="72,158 122,162 172,150 222,164 272,156 322,156"/>
+          <polyline fill="none" stroke="#C2410C" stroke-width="3.5" stroke-linejoin="round" points="322,156 372,140 422,122 472,104 522,86 572,72 622,62"/>
+          <circle cx="322" cy="156" r="5" fill="#fff" stroke="#16181D" stroke-width="2"/>
+          <circle cx="622" cy="62" r="6" fill="#C2410C"/>
+          <g font-family="Pretendard Variable, Pretendard, sans-serif" font-weight="700">
+            <text x="312" y="180" font-size="13" text-anchor="end" fill="#4E5560">3,200</text>
+            <text x="614" y="50" font-size="15" text-anchor="end" fill="#C2410C">7,900</text>
+          </g>
+        </svg>
+        <div class="legend"><span><i style="background:#B9B4AA"></i>대행 전</span><span><i style="background:#C2410C"></i>대행 후</span></div>
+      </div>
+      <p class="im"><b>아임웹</b> 전후 막대와 선 그래프는 이미지 위젯(PNG 2배 크기)으로 올려요. 원본(Figma)도 드려서 숫자가 바뀌면 다시 내보내면 돼요.</p>
+    </div>
+  </article>
+
+  <!-- 사례 목록 -->
+  <div class="filters" role="tablist" aria-label="업종으로 사례 거르기">
+    <button type="button" role="tab" aria-selected="true" data-f="all">전체</button>
+    <button type="button" role="tab" aria-selected="false" data-f="shop">쇼핑몰</button>
+    <button type="button" role="tab" aria-selected="false" data-f="fran">프랜차이즈</button>
+    <button type="button" role="tab" aria-selected="false" data-f="clinic">병원·의원</button>
+    <button type="button" role="tab" aria-selected="false" data-f="edu">교육</button>
+  </div>
+  <div class="case-list" id="caseList">
+    <article class="case" data-k="fran">
+      <div class="who"><b>외식 프랜차이즈 C사</b><span>매장 48곳 · 8개월</span></div>
+      <div class="what"><strong>가맹 문의를 광고 하나로 모으기</strong>지역별로 흩어진 광고를 하나로 합치고, 상담 신청서 질문을 5개에서 3개로 줄였어요.</div>
+      <div class="res"><div><div class="n up num">+212%</div><div class="k">월 가맹 문의</div></div><div><div class="n num">1.9만 원</div><div class="k">문의 1건 비용</div></div></div>
+      <button type="button" class="shot" data-shot="외식 프랜차이즈 C사 · 문의 접수 현황">원본 캡처<br>크게 보기</button>
+    </article>
+    <article class="case" data-k="clinic">
+      <div class="who"><b>피부과 의원 D</b><span>지점 2곳 · 5개월</span></div>
+      <div class="what"><strong>예약까지 이어지는 검색 광고</strong>시술 이름 검색어 위주로 바꾸고, 예약 페이지까지 한 번에 오게 했어요.</div>
+      <div class="res"><div><div class="n up num">+86%</div><div class="k">온라인 예약 수</div></div><div><div class="n num">-41%</div><div class="k">예약 1건 비용</div></div></div>
+      <button type="button" class="shot" data-shot="피부과 의원 D · 예약 통계">원본 캡처<br>크게 보기</button>
+    </article>
+    <article class="case" data-k="shop">
+      <div class="who"><b>패션 쇼핑몰 E사</b><span>자사몰 · 4개월</span></div>
+      <div class="what"><strong>신상품 출시 주간 매출 끌어올리기</strong>출시 2주 전부터 관심 고객을 모아 두고, 출시일에 맞춰 광고를 집중했어요.</div>
+      <div class="res"><div><div class="n up num">+3.1배</div><div class="k">출시 주 매출</div></div><div><div class="n num">520%</div><div class="k">광고 수익률</div></div></div>
+      <button type="button" class="shot" data-shot="패션 쇼핑몰 E사 · 매출 보고서">원본 캡처<br>크게 보기</button>
+    </article>
+    <p class="empty" id="caseEmpty">이 업종 사례는 정리 중이에요. 상담 때 비슷한 사례를 따로 보여드릴게요.</p>
+  </div>
+  <p class="im"><b>시안 설명</b> 사례 수가 늘어도 같은 줄 모양을 복제해서 아래로 붙이면 돼요.</p>
+  <p class="im"><b>아임웹</b> 사례 한 줄 = 텍스트 위젯 3개(3칸·5칸·3칸) + 이미지 위젯 1개(1칸, 원본 캡처를 클릭하면 크게). 업종 버튼은 아임웹 기본 위젯으로 거르기가 어려울 수 있어 [확인 필요] — 안 되면 버튼 없이 업종 칩만 표시.</p>
+</div></section>
+
+<!-- 진행 방식 -->
+<section id="flow" style="padding-top:0" aria-labelledby="h-flow"><div class="wrap">
+  <p class="eyebrow">진행 방식</p>
+  <h2 id="h-flow">첫 달에 무엇을 하는지 미리 알려드려요</h2>
+  <div class="flow">
+    <div><div class="w">1주차</div><h3>무료 진단</h3><p>지금 광고 계정을 보고 새는 광고비를 찾아요.</p></div>
+    <div><div class="w">2주차</div><h3>목표 정하기</h3><p>매출·수익률 목표를 숫자로 정해 계약서에 적어요.</p></div>
+    <div><div class="w">3~4주차</div><h3>광고 재구성</h3><p>상품·지역·고객별로 광고를 다시 짜요.</p></div>
+    <div><div class="w">매주</div><h3>5분 보고서</h3><p>매출·광고비·수익률 세 줄과 다음 주 할 일.</p></div>
+  </div>
+  <p class="im"><b>아임웹</b> 텍스트 위젯 4개(3칸씩), 휴대폰에서는 자동으로 세로로 쌓여요.</p>
+</div></section>
+
+<!-- 문의 -->
+<section class="contact" id="contact" aria-labelledby="h-contact"><div class="wrap">
+  <div>
+    <p class="eyebrow" style="color:#F2A47A">상담 신청</p>
+    <h2 id="h-contact">우리 가게 숫자로 먼저 진단받아 보세요</h2>
+    <p class="lead">광고 계정을 보고 3일 안에 '새는 광고비'와 '늘릴 수 있는 매출'을 정리해 보내드려요.</p>
+    <ul>
+      <li>진단은 무료, 계약 의무 없음</li>
+      <li>광고 계정은 읽기 권한만 받아요</li>
+      <li>평일 기준 하루 안에 담당자가 연락드려요</li>
+    </ul>
+  </div>
+  <form class="f" id="cf" novalidate>
+    <div id="formBody">
+      <div class="row2">
+        <div class="fld" id="f-name"><label for="cName">회사·가게 이름</label><input id="cName" autocomplete="organization"><div class="err">이름을 적어 주세요</div></div>
+        <div class="fld" id="f-who"><label for="cWho">담당자 이름</label><input id="cWho" autocomplete="name"><div class="err">담당자 이름을 적어 주세요</div></div>
+      </div>
+      <div class="fld" id="f-tel" style="margin-top:16px"><label for="cTel">연락처</label><input id="cTel" type="tel" inputmode="tel" autocomplete="tel" placeholder="010-0000-0000"><div class="err">숫자 10~11자리로 적어 주세요</div></div>
+      <div class="fld" style="margin-top:16px"><label for="cBiz">업종</label><select id="cBiz"><option>온라인 쇼핑몰</option><option>프랜차이즈</option><option>병원·의원</option><option>교육</option><option>기타</option></select></div>
+      <div class="fld" style="margin-top:16px"><label for="cBud">월 광고비</label><select id="cBud"><option>300만 원 미만</option><option>300만~1,000만 원</option><option>1,000만 원 이상</option><option>아직 안 함</option></select></div>
+      <label class="chk" style="margin-top:12px"><input type="checkbox" id="cAgree"> 상담을 위한 개인정보 수집·이용에 동의해요</label>
+      <div class="fld" id="f-agree"><div class="err">동의가 필요해요</div></div>
+      <button class="btn btn-fill" type="submit" style="width:100%;margin-top:8px;min-height:56px">무료 진단 신청</button>
+    </div>
+    <div class="done" id="formDone" role="status">
+      <h3>신청을 받았어요</h3>
+      <p>시안이라 실제로 보내지지는 않아요. 아임웹에서는 입력폼 위젯으로 같은 화면을 만들고, 신청이 오면 담당자에게 알림이 가요.</p>
+      <button type="button" class="btn btn-line btn-sm" id="formReset">다시 보기</button>
+    </div>
+    <p class="im"><b>아임웹</b> 입력폼 위젯(항목: 이름·연락처·선택형 2개·동의). 알림 받는 방법은 [확인 필요].</p>
+  </form>
+</div></section>
+
+<!-- 아임웹 적용표 -->
+<section class="map" aria-labelledby="h-map"><div class="wrap">
+  <p class="eyebrow">아임웹 적용표</p>
+  <h2 id="h-map">블록마다 아임웹의 어떤 위젯으로 만드는지</h2>
+  <p class="lead">퍼블리싱은 하지 않으시니, 담당자분이 디자인 모드에서 그대로 따라 만들 수 있게 블록마다 위젯과 넘겨드릴 파일을 정리했어요.</p>
+  <table>
+    <thead><tr><th>블록</th><th>아임웹 위젯</th><th>넘겨드릴 것</th><th>확인</th></tr></thead>
+    <tbody>
+      <tr><td>머리·메뉴</td><td data-l="위젯">상단 디자인 + 메뉴 링크를 섹션 ID로</td><td data-l="파일">로고 PNG·SVG</td><td data-l="확인" class="ok">도움말 확인</td></tr>
+      <tr><td>첫 화면·핵심 숫자 4개</td><td data-l="위젯">섹션 배경색 + 텍스트 위젯(12칸 그리드 3칸씩)</td><td data-l="파일">글자 크기·색 값표</td><td data-l="확인" class="ok">도움말 확인</td></tr>
+      <tr><td>고객사 로고 줄</td><td data-l="위젯">갤러리 위젯(그리드 갤러리)</td><td data-l="파일">같은 크기 로고 PNG</td><td data-l="확인" class="ok">도움말 확인</td></tr>
+      <tr><td>강점 ↔ 증거</td><td data-l="위젯">텍스트 위젯 2개(5칸·7칸, 배경·테두리 설정) + 이미지</td><td data-l="파일">작은 그래프 PNG</td><td data-l="확인" class="ok">도움말 확인</td></tr>
+      <tr><td>대표 사례 전후·그래프</td><td data-l="위젯">텍스트 위젯(표 삽입) + 이미지 위젯</td><td data-l="파일">막대·선 그래프 PNG(2배) + 원본</td><td data-l="확인" class="ok">도움말 확인</td></tr>
+      <tr><td>사례 목록</td><td data-l="위젯">텍스트 위젯 3개 + 이미지 위젯 1개를 한 줄로, 줄 복제</td><td data-l="파일">캡처 정리본(같은 비율로 자름)</td><td data-l="확인" class="chk2">업종 거르기 버튼은 확인 필요</td></tr>
+      <tr><td>상담 신청</td><td data-l="위젯">입력폼 위젯</td><td data-l="파일">항목·문구 목록</td><td data-l="확인" class="chk2">알림 방식 확인 필요</td></tr>
+    </tbody>
+  </table>
+  <p class="src-list">근거로 연 아임웹 도움말 (2026-10-27): <a href="https://imweb.me/faq?mode=view&amp;category=29&amp;category2=33&amp;idx=71142" target="_blank" rel="noopener">텍스트 위젯</a> · <a href="https://imweb.me/faq?mode=view&amp;category=28&amp;category2=31&amp;idx=71502" target="_blank" rel="noopener">위젯 배치·그리드 실습</a> · <a href="https://imweb.me/faq?category=28&amp;category2=31&amp;idx=70671&amp;mode=view" target="_blank" rel="noopener">섹션 설정(배경·간격·섹션 ID)</a> · <a href="https://imweb.me/faq?mode=view&amp;category=29&amp;category2=36&amp;idx=71183" target="_blank" rel="noopener">갤러리 위젯</a></p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>셈결마케팅 (가상 회사) · 사업자 정보 자리 · 제안용 시안</span>
+  <span>수치·사례·로고는 모두 예시예요</span>
+</div></footer>
+
+<dialog id="shotDlg" aria-labelledby="shotTitle">
+  <h3 id="shotTitle">원본 캡처</h3>
+  <div class="ph" id="shotPh">원본 캡처 자리</div>
+  <p>고객사가 가진 캡처를 여기서 크게 보여줘요. 페이지에는 숫자로 요약하고, 캡처는 '증거'로 한 번 더 확인하는 자리예요.</p>
+  <button type="button" class="btn btn-fill btn-sm" id="shotClose">닫기</button>
+</dialog>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+// 아임웹 메모
+$('#imToggle').addEventListener('click', e => {
+  const on = document.body.classList.toggle('show-im');
+  e.currentTarget.setAttribute('aria-pressed', on);
+  e.currentTarget.textContent = on ? '아임웹 제작 메모 숨기기' : '아임웹 제작 메모 보기';
+});
+// 원본 캡처 보기
+const dlg = $('#shotDlg');
+$$('[data-shot]').forEach(b => b.addEventListener('click', () => {
+  $('#shotTitle').textContent = '원본 캡처';
+  $('#shotPh').textContent = b.dataset.shot + ' 캡처 자리';
+  dlg.showModal();
+}));
+$('#shotClose').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+// 업종 거르기
+$$('.filters button').forEach(b => b.addEventListener('click', () => {
+  $$('.filters button').forEach(x => x.setAttribute('aria-selected', x === b));
+  let shown = 0;
+  $$('#caseList .case').forEach(c => { const on = b.dataset.f === 'all' || c.dataset.k === b.dataset.f; c.style.display = on ? '' : 'none'; if (on) shown++; });
+  $('#caseEmpty').style.display = shown ? 'none' : 'block';
+}));
+// 상담 폼
+$('#cf').addEventListener('submit', e => {
+  e.preventDefault();
+  const checks = [
+    ['f-name', $('#cName').value.trim().length > 0],
+    ['f-who', $('#cWho').value.trim().length > 0],
+    ['f-tel', /^\d{10,11}$/.test($('#cTel').value.replace(/[^\d]/g, ''))],
+    ['f-agree', $('#cAgree').checked]
+  ];
+  let first = null;
+  checks.forEach(([id, ok]) => { $('#' + id).classList.toggle('bad', !ok); if (!ok && !first) first = id; });
+  if (first) { const el = $('#' + first + ' input') || $('#cAgree'); el.focus(); return; }
+  $('#formBody').style.display = 'none'; $('#formDone').style.display = 'block';
+});
+$('#formReset').addEventListener('click', () => { $('#cf').reset(); $('#formBody').style.display = ''; $('#formDone').style.display = 'none'; });
+</script>
+</body>
+</html>
